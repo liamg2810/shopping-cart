@@ -77,7 +77,8 @@
 </head>
 
 <body>
-    <h1 class="text-center text-5xl font-bold">Cart</h1>
+    <a class="absolute ml-3 mt-3 text-center bg-cyan-500 hover:bg-cyan-600 hover:pointer w-32 rounded-full text-lg font-bold p-2" href="index.php">Back</a>
+    <h1 class="text-center text-5xl font-bold w-full">Cart</h1>
 
     <div class="flex justify-center mt-10 flex-col mx-32 gap-5">
         <form action="cart.php?id=<?php echo $_GET['id']; ?>" method="POST">
