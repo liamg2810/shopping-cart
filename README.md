@@ -25,4 +25,4 @@ CREATE TABLE tblItem(
 );
 ```
 
-You can now go to http://localhost/shoppingCart
+You can now go to http://localhost/shoppingcart to use the app.
