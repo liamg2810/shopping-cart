@@ -17,6 +17,27 @@
 
         return $carts;
     }
+
+    function DeleteCart($id) {
+
+        global $connection;
+
+        $query = $connection->prepare('DELETE FROM tblcart WHERE id = :id');
+
+        $query->bindParam(':id', $id);
+
+        $query->execute();
+    }
+
+    if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+
+            DeleteCart($id);
+
+            header('Location: index.php');
+        }
+    }
 ?>
 
 <html>
@@ -50,12 +71,12 @@
 
                     foreach ($carts as $cart) {
                         echo '<tr>';
-                        echo '<td class="border px-4 py-2">' . $cart['name'] . '</td>';
+                        echo '<td class="border px-4 py-2">' . $cart['cartName'] . '</td>';
                         echo
                         '<td class="border px-4 py-2">
                             <div class="flex justify-left gap-2">
                                 <a class="bg-cyan-500 px-4 text-lg rounded-full" href="cart.php?id=' . $cart['id'] . '">View</a>
-                                <a class="bg-red-500  px-4  text-lg rounded-full" href="deletecart.php?id=' . $cart['id'] . '">Delete</a>
+                                <a class="bg-red-500  px-4  text-lg rounded-full" href="index.php?id=' . $cart['id'] . '">Delete</a>
                             </div>
                         </td>';
                         echo '</tr>';
